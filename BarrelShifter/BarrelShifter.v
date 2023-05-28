@@ -3,6 +3,7 @@ module BarrelShifter #(parameter N=32)
 	input [N-1:0] Input,
 	input [$clog2(N)-1:0] Shift_Val,
 	input Left_Right,
+	input Logic_Arithmetic,
 	output [N-1:0] Result
 );
 
@@ -14,6 +15,8 @@ wire Right_MUX_Out[$clog2(N)][N];
 
 wire [N-1:0] Left_Out;
 wire [N-1:0] Right_Out;
+
+wire ASR_Check = Logic_Arithmetic & Input[N-1];
 
 for (i=N/2; 0<i; i=i/2) begin : All
 
@@ -32,7 +35,7 @@ for (i=N/2; 0<i; i=i/2) begin : All
 				MUX Right_MUX(.I0(Input[j]), .I1(Input[j+i]), .Select(Shift_Val[$clog2(i)]), .Out(Right_MUX_Out[$clog2(i)][j]));
 
 			else
-				MUX Right_MUX(.I0(Input[j]), .I1(1'b0), .Select(Shift_Val[$clog2(i)]), .Out(Right_MUX_Out[$clog2(i)][j]));
+				MUX Right_MUX(.I0(Input[j]), .I1(ASR_Check), .Select(Shift_Val[$clog2(i)]), .Out(Right_MUX_Out[$clog2(i)][j]));
 		end
 		
 	end
@@ -54,7 +57,7 @@ for (i=N/2; 0<i; i=i/2) begin : All
 				MUX Right_MUX(.I0(Right_MUX_Out[$clog2(i)+1][j]), .I1(Right_MUX_Out[$clog2(i)+1][j+i]), .Select(Shift_Val[$clog2(i)]), .Out(Right_MUX_Out[$clog2(i)][j]));
 
 			else
-				MUX Right_MUX(.I0(Right_MUX_Out[$clog2(i)+1][j]), .I1(1'b0), .Select(Shift_Val[$clog2(i)]), .Out(Right_MUX_Out[$clog2(i)][j]));
+				MUX Right_MUX(.I0(Right_MUX_Out[$clog2(i)+1][j]), .I1(ASR_Check), .Select(Shift_Val[$clog2(i)]), .Out(Right_MUX_Out[$clog2(i)][j]));
 		end
 		
 	end
