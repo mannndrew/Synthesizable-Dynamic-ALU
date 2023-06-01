@@ -1,4 +1,4 @@
-module RippleCarryAdder #(parameter N=8)
+module RippleCarryAdder #(parameter N=32)
 (
 	input [N-1:0] A,
 	input [N-1:0] B,
