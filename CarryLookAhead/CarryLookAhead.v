@@ -3,7 +3,8 @@ module CarryLookAhead #(parameter N = 32)
 	input [N-1:0] A,
 	input [N-1:0] B,
 	input cin,
-	output [N-1:0] Sum
+	output [N-1:0] Sum,
+	output OVR
 );
 
 
@@ -13,9 +14,9 @@ module CarryLookAhead #(parameter N = 32)
 genvar i, j;
 
 wire [N-1:0]B_or_Bnot;
-wire [N-2:0] p;
-wire [N-2:0] g;
-wire [N-1:0] c;
+wire [N-1:0] p;
+wire [N-1:0] g;
+wire [N:0] c;
 
 
 /* -----------------------------Generate B_or_Bnot------------------------------- */
@@ -34,10 +35,10 @@ endgenerate
 
 
 assign 
-	p[N-2:0] = (A[N-2:0] ^ B_or_Bnot[N-2:0]);
+	p[N-1:0] = (A[N-1:0] ^ B_or_Bnot[N-1:0]);
 	
 assign
-	g[N-2:0] = (A[N-2:0] & B_or_Bnot[N-2:0]);
+	g[N-1:0] = (A[N-1:0] & B_or_Bnot[N-1:0]);
 
 
 /* -----------------------------Assign Carry Terms------------------------------- */
@@ -59,7 +60,7 @@ assign c[0] = cin;
 
 generate
 
-for (i = 1; i < N; i = i + 1) begin : outer
+for (i = 1; i <= N; i = i + 1) begin : outer
 
 	wire [i:0] term;
 
@@ -93,5 +94,6 @@ FullAdder S3(.a(A[3]), .b(B[3]), .cin(c[3]), .sum(Sum[3]));
 
 FullAdder S[N-1:0](.a(A[N-1:0]), .b(B_or_Bnot[N-1:0]), .cin(c[N-1:0]), .sum(Sum[N-1:0]));
 
+assign OVR = c[N];
 
 endmodule

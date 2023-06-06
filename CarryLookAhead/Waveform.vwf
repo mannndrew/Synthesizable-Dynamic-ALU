@@ -1,7 +1,7 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off CarryLookAhead -c CarryLookAhead --vector_source="C:/Users/mannn/Desktop/ALU/CarryLookAhead/Waveform.vwf" --testbench_file="C:/Users/mannn/Desktop/ALU/CarryLookAhead/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off CarryLookAhead -c CarryLookAhead --vector_source="C:/Users/mannn/Documents/Github/Synthesizable-Dynamic-ALU/CarryLookAhead/Waveform.vwf" --testbench_file="C:/Users/mannn/Documents/Github/Synthesizable-Dynamic-ALU/CarryLookAhead/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
 <ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off CarryLookAhead -c CarryLookAhead --vector_source="C:/Users/mannn/Desktop/ALU/CarryLookAhead/Waveform.vwf" --testbench_file="C:/Users/mannn/Desktop/ALU/CarryLookAhead/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/mannn/Desktop/ALU/CarryLookAhead/simulation/qsim/" CarryLookAhead -c CarryLookAhead</fnetlist_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/mannn/Documents/Github/Synthesizable-Dynamic-ALU/CarryLookAhead/simulation/qsim/" CarryLookAhead -c CarryLookAhead</fnetlist_cmd>
 <tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/mannn/Desktop/ALU/CarryLookAhead/simulation/qsim/" CarryLookAhead -c CarryLookAhead</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
@@ -20,6 +20,10 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -38,6 +42,10 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+
+
 </modelsim_script_timing>
 <hdl_lang>verilog</hdl_lang>
 </simulation_settings>*/
@@ -1076,12 +1084,22 @@ SIGNAL("cin")
 	PARENT = "";
 }
 
+SIGNAL("OVR")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
 TRANSITION_LIST("A[31]")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 1000.0;
+		LEVEL 1 FOR 1000.0;
 	}
 }
 
@@ -1090,7 +1108,7 @@ TRANSITION_LIST("A[30]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1099,7 +1117,7 @@ TRANSITION_LIST("A[29]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1108,7 +1126,7 @@ TRANSITION_LIST("A[28]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1117,7 +1135,7 @@ TRANSITION_LIST("A[27]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1126,7 +1144,7 @@ TRANSITION_LIST("A[26]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1135,7 +1153,7 @@ TRANSITION_LIST("A[25]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1144,7 +1162,7 @@ TRANSITION_LIST("A[24]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1153,7 +1171,7 @@ TRANSITION_LIST("A[23]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1162,7 +1180,7 @@ TRANSITION_LIST("A[22]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1171,7 +1189,7 @@ TRANSITION_LIST("A[21]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1180,7 +1198,7 @@ TRANSITION_LIST("A[20]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1189,7 +1207,7 @@ TRANSITION_LIST("A[19]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1198,7 +1216,7 @@ TRANSITION_LIST("A[18]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1207,7 +1225,7 @@ TRANSITION_LIST("A[17]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1216,7 +1234,7 @@ TRANSITION_LIST("A[16]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1225,7 +1243,7 @@ TRANSITION_LIST("A[15]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1234,7 +1252,7 @@ TRANSITION_LIST("A[14]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1243,7 +1261,7 @@ TRANSITION_LIST("A[13]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1252,7 +1270,7 @@ TRANSITION_LIST("A[12]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1261,7 +1279,7 @@ TRANSITION_LIST("A[11]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1270,7 +1288,7 @@ TRANSITION_LIST("A[10]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1279,7 +1297,7 @@ TRANSITION_LIST("A[9]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1288,7 +1306,7 @@ TRANSITION_LIST("A[8]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1297,7 +1315,7 @@ TRANSITION_LIST("A[7]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1306,7 +1324,7 @@ TRANSITION_LIST("A[6]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1315,7 +1333,7 @@ TRANSITION_LIST("A[5]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1324,7 +1342,7 @@ TRANSITION_LIST("A[4]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1333,7 +1351,7 @@ TRANSITION_LIST("A[3]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1342,7 +1360,7 @@ TRANSITION_LIST("A[2]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1351,7 +1369,7 @@ TRANSITION_LIST("A[1]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1360,7 +1378,7 @@ TRANSITION_LIST("A[0]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1369,7 +1387,7 @@ TRANSITION_LIST("B[31]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 1000.0;
+		LEVEL 1 FOR 1000.0;
 	}
 }
 
@@ -1648,7 +1666,7 @@ TRANSITION_LIST("B[0]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -1946,6 +1964,15 @@ TRANSITION_LIST("cin")
 	{
 		REPEAT = 1;
 		LEVEL 0 FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("OVR")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
 	}
 }
 
@@ -2946,6 +2973,15 @@ DISPLAY_LINE
 	TREE_INDEX = 99;
 	TREE_LEVEL = 1;
 	PARENT = 67;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "OVR";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 100;
+	TREE_LEVEL = 0;
 }
 
 TIME_BAR
