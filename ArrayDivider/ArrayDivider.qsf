@@ -52,10 +52,8 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name BDF_FILE PU.bdf
-set_global_assignment -name BDF_FILE MUX.bdf
-set_global_assignment -name BDF_FILE FullAdder.bdf
-set_global_assignment -name BDF_FILE DividerCircuit.bdf
+set_global_assignment -name VERILOG_FILE PU.v
+set_global_assignment -name VERILOG_FILE MUX.v
+set_global_assignment -name VERILOG_FILE FullAdder.v
 set_global_assignment -name VERILOG_FILE ArrayDivider.v
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -9,8 +9,8 @@ genvar i, j;
 
 wire Ground = 1'b0;
 wire Vcc = 1'b1;
-wire Carry[N][N-1];
-wire Down[N][N-1];
+wire [N-2:0] Carry [N-1:0];
+wire [N-1:0] Down [N-1:0];
 
 generate
 
@@ -23,7 +23,7 @@ generate
 				PU FirstRow2(.A(Ground), .B(Divisor[j]), .Cin(Carry[0][j-1]), .Cout(Carry[0][j]), .Select(Quotient[N-1]), .Down(Down[0][j]));
 			end
 			
-			PU FirstRow3(.A(Ground), .B(Divisor[N-1]), .Cin(Carry[0][N-2]), .Cout(Quotient[N-1]), .Select(Quotient[N-1]));
+			PU FirstRow3(.A(Ground), .B(Divisor[N-1]), .Cin(Carry[0][N-2]), .Cout(Quotient[N-1]), .Select(Quotient[N-1]), .Down());
 		end
 		
 		
@@ -36,7 +36,7 @@ generate
 				PU AllRow2(.A(Down[i-1][j-1]), .B(Divisor[j]), .Cin(Carry[i][j-1]), .Cout(Carry[i][j]), .Select(Quotient[N-i-1]), .Down(Down[i][j]));
 			end
 			
-			PU AllRow3(.A(Down[i-1][j-1]), .B(Divisor[N-1]), .Cin(Carry[i][N-2]), .Cout(Quotient[N-i-1]), .Select(Quotient[N-i-1]));
+			PU AllRow3(.A(Down[i-1][N-2]), .B(Divisor[N-1]), .Cin(Carry[i][N-2]), .Cout(Quotient[N-i-1]), .Select(Quotient[N-i-1]), .Down());
 		
 		end
 	end
