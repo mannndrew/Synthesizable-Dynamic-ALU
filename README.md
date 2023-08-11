@@ -1,4 +1,4 @@
-# VGA Display
+# Synthesizable Dynamic ALU
 
 Component generated RTLs for basic ALU components including addition, subtraction, multiplication, division, shifting, and more. This was created to test the limits of verilog's hardware design capabilities using parameterized models with generate loops.
 
